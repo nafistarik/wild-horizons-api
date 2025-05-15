@@ -1,5 +1,5 @@
-export function showResponse(res, data) {
+export function sendJSONResponse(res, statusCode, payload) {
     res.setHeader("Content-Type", "application/json");
-    res.statusCode = 200;
-    res.end(JSON.stringify(data));
+    res.statusCode = statusCode;
+    res.end(JSON.stringify(payload));
 }
