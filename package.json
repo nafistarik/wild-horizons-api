@@ -1,0 +1,12 @@
+{
+  "name": "wild-horizons-api",
+  "version": "1.0.0",
+  "description": "A node js api for getting beautiful places of the world",
+  "main": "index.js",
+  "type" : "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Md. Nafis Tarik",
+  "license": "ISC"
+}
