@@ -1,6 +1,7 @@
 import http from "node:http";
 import { getDataFromDB } from "./database/db.js";
 import { sendJSONResponse } from "./utils/showResponse.js";
+import filterByParams from "./utils/filterByParams.js";
 
 const PORT = 8000;
 
@@ -10,9 +11,15 @@ const server = http.createServer(async (req, res) => {
     sendJSONResponse(res, 200, allDestinations);
   } else if (req.url.startsWith("/api/continent") && req.method === "GET") {
     const continent = req.url.split("/").pop(); //req.url.split('/')[3]
-    const filteredDestinations = allDestinations.filter((destination) => {
-      return destination.continent.toLowerCase() === continent.toLowerCase();
-    });
+    const filteredDestinations = filterByParams(
+      allDestinations,
+      "continent",
+      continent
+    );
+    sendJSONResponse(res, 200, filteredDestinations);
+  } else if (req.url.startsWith("/api/country") && req.method === "GET") {
+    const country = req.url.split("/").pop();
+    const filteredDestinations = filterByParams(allDestinations, country);
     sendJSONResponse(res, 200, filteredDestinations);
   } else {
     sendJSONResponse(res, 404, {
