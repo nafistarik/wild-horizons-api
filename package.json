@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "A node js api for getting beautiful places of the world",
   "main": "index.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+  "dev": "nodemon index.js"
   },
   "author": "Md. Nafis Tarik",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
