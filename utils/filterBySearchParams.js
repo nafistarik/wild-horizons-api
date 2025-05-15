@@ -7,7 +7,7 @@ export default function filterBySearchParams(data, searchParams) {
         data = data.filter(item => item.country.toLowerCase() === country.toLowerCase());
     }
     if (is_open_to_public) {
-        data = data.filter(item => item.is_open_to_public === JSON.parse(is_open_to_public));
+        data = data.filter(item => item.is_open_to_public === JSON.parse(is_open_to_public.toLowerCase()));
     }
     return data;
 }

@@ -14,21 +14,20 @@ const server = http.createServer(async (req, res) => {
 
   if (urlObj.pathname === "/api" && req.method === "GET") {
     sendJSONResponse(res, 200, filteredDestinations);
-    console.log("Query Parameters:", queryObj);
 
-  } else if (req.url.startsWith("/api/continent") && req.method === "GET") {
-    const continent = req.url.split("/").pop(); //req.url.split('/')[3]
-    const filteredDestinations = filterByParams(
-      allDestinations,
+  } else if (urlObj.pathname.startsWith("/api/continent") && req.method === "GET") {
+    const continent = urlObj.pathname.split("/").pop(); //req.url.split('/')[3]
+    filteredDestinations = filterByParams(
+      filteredDestinations,
       "continent",
       continent
     );
     sendJSONResponse(res, 200, filteredDestinations);
 
-  } else if (req.url.startsWith("/api/country") && req.method === "GET") {
-    const country = req.url.split("/").pop();
-    const filteredDestinations = filterByParams(
-      allDestinations,
+  } else if (urlObj.pathname.startsWith("/api/country") && req.method === "GET") {
+    const country = urlObj.pathname.split("/").pop();
+    filteredDestinations = filterByParams(
+      filteredDestinations,
       "country",
       country
     );
